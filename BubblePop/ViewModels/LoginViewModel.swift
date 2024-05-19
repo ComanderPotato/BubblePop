@@ -14,13 +14,14 @@ class LoginViewModel: ObservableObject {
     @Published var errorMessage = ""
     init() {}
     
+    // First validates that the inputs were correct, and logs the user in if the account exists
     func login() {
         guard validate() else {
             return
         }
-        // try to log user in
         Auth.auth().signIn(withEmail: email, password: password)
     }
+    // Used to validate the inputs, and change the error message if needed
     private func validate() -> Bool {
         errorMessage = ""
         guard !email.trimmingCharacters(in: .whitespaces).isEmpty,
@@ -29,7 +30,7 @@ class LoginViewModel: ObservableObject {
             return false
         }
         guard email.contains("@") && email.contains(".") else {
-            errorMessage = "Please fill in all fields"
+            errorMessage = "Email not formatted correctly"
             return false
         }
         return true

@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+// Score class
 struct Score: Codable, Identifiable {
     let id: String
     let userId: String

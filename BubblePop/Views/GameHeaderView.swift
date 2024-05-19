@@ -6,16 +6,16 @@
 //
 
 import SwiftUI
-
+// GameHeader for better extensibility, takes a certain number of data such as game timer and score, and methods to pause and un-pause the game
 struct GameHeaderView: View {
     let gameTime: TimeInterval
     let gameScore: Double
     let highScore: Double
     let difficulty: Int
-    let isActive: Bool
+    var isActive: Bool
     let stopAnimation: () -> Void
     let startAnimation: () -> Void
-    let setIsActive: () -> Void
+    let toggleIsActive: () -> Void
     var body: some View {
         ZStack {
             HStack {
@@ -35,7 +35,6 @@ struct GameHeaderView: View {
                 }
                 Spacer()
                 VStack {
-                    
                     if self.isActive {
                         Image(systemName: "play.fill").resizable()
                             .aspectRatio(contentMode: .fit)
@@ -53,7 +52,7 @@ struct GameHeaderView: View {
                             self.startAnimation()
                         }
                     }
-                    setIsActive()
+                    self.toggleIsActive()
                 }
             }
         }
@@ -70,6 +69,6 @@ struct GameHeaderView: View {
         isActive: true,
         stopAnimation: {},
         startAnimation: {},
-        setIsActive: {}
+        toggleIsActive: {}
     )
 }

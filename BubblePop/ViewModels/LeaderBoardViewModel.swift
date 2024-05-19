@@ -13,30 +13,7 @@ class LeaderBoardViewModel: ObservableObject {
         fetchLeaderBoard()
     }
     
-    
-//    func fetchLeaderBoard() -> Void {
-//        let db = Firestore.firestore()
-//        db.collection("scores").getDocuments { (snapeshot, error) in
-//            if let error = error {
-//                print("Fetch error")
-//            } else {
-//                for document in snapeshot!.documents {
-//                    let data = document.data()
-//                    self.leaderBoard.append(Score (
-//                        id: data["id"] as? String ?? "",
-//                        userId: data["userId"] as? String ?? "",
-//                        name: data["name"] as? String ?? "",
-//                        score: data["score"] as? Double ?? 0.0
-//                    ))
-//                }
-//                self.leaderBoard.sort { (a, b) in
-//                    a.score < b.score
-//                }
-//                self.shortenLeaderBoard()
-//            }
-//        }
-//    }
-    
+    // Retrieves all the scores from the Firestore database, then sorts them in ascending order and shortens the array
     func fetchLeaderBoard() {
         let db = Firestore.firestore()
         db.collection("scores").addSnapshotListener { (snapshot, error) in
@@ -65,13 +42,15 @@ class LeaderBoardViewModel: ObservableObject {
             }
         }
     }
+    // Makes sure the leaderboard is only 100 long
     private func shortenLeaderBoard() -> Void {
         guard var leaderBoard = self.leaderBoard else {
             return
         }
+        let db = Firestore.firestore()
         while leaderBoard.count > 100 {
+            print("Hello")
             let last = leaderBoard.popLast()
-            let db = Firestore.firestore()
             db.collection("users")
                 .document(last!.id)
                 .delete()

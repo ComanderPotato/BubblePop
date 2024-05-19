@@ -7,16 +7,7 @@
 
 
 import SwiftUI
-fileprivate struct Country {
-    var id: String
-    var name: String
-}
-fileprivate func getLocales() -> [Country] {
-    let locales = Locale.isoRegionCodes
-        .filter { $0 != "Australia"}
-        .compactMap { Country(id: $0, name: Locale.current.localizedString(forRegionCode: $0) ?? $0)}
-    return [Country(id: "AU", name: Locale.current.localizedString(forRegionCode: "AU") ?? "Australia")] + locales
-}
+// Allows a user to register an account for the application
 struct RegisterView: View {
     @StateObject var viewModel = RegisterViewModel()
     
@@ -34,20 +25,12 @@ struct RegisterView: View {
                     .textFieldStyle(DefaultTextFieldStyle())
                     .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
                     .autocorrectionDisabled()
-
-            Picker("Country \(flag(country: viewModel.origin))", selection: $viewModel.origin) {
-                     ForEach(getLocales(), id: \.id) { country in
-                     Text(country.name).tag(country.id)
-                     }
-                 }.pickerStyle(.automatic)
-                TLButton(title: "Create Account",
+                BPButton(title: "Create Account",
                          background: .green) {
-                        // Attemp registration
                     viewModel.register()
                 }
             }
-//            .offset(y: -50)
-        }
+        }.frame(maxWidth: 400)
     }
 }
 

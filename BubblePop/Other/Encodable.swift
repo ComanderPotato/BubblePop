@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+// This is used to encode a class as a dictionary, it is used to insert records into the database
 extension Encodable {
     func asDictionary() -> [String: Any] {
         guard let data = try? JSONEncoder().encode(self) else {
@@ -20,4 +20,5 @@ extension Encodable {
             return [:]
         }
     }
+    
 }

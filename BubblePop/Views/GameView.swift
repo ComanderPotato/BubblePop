@@ -7,119 +7,96 @@
 
 import SwiftUI
 
-struct GameView: View {
-    // Combine GameViewModel and BubbleViewModel
-    @StateObject var viewModel = GameViewModel()
-    @StateObject var bubbleView = BubbleViewModel()
-    @StateObject var gameTimer = TimerViewModel()
-    @StateObject var countDownTimer = TimerViewModel(totalTime: 3)
-    @EnvironmentObject var mainViewModel: MainViewModel
 
-    private var numberOfBubbles: Int
-    private var totalTime: TimeInterval
-    private var difficulty: Int
-    
-    init(numberOfBubbles: Double, totalTime: Double, difficulty: Int) {
-        self.numberOfBubbles = Int(numberOfBubbles)
-        self.totalTime = TimeInterval(totalTime)
-        self.difficulty = difficulty
-    }
+// The main view for the game
+struct GameView: View {
+    @StateObject var viewModel: GameViewModel
+    // Basic timer
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    // Used to pause the game if the user closes the app
     @Environment(\.scenePhase) var scenePhase
+    @EnvironmentObject var mainViewModel: MainViewModel
     @State private var isActive = true
+    @State var isPaused = false
     var body: some View {
         VStack {
-            if !(countDownTimer.totalTime > 0) {
+            // If the countdown is not 0, show the "countdown screen" which just displays the countdown number
+            if viewModel.getCountDownTime() > 0 {
+                HStack {
+                    Text("\(viewModel.getCountDownTime().formatted())")
+                        .bold()
+                        .font(.system(size: 200))
+                }
+            } else {
+                // Game Header with the necessary data
                 GameHeaderView(
-                    gameTime: gameTimer.totalTime,
+                    gameTime: viewModel.getGameTime(),
                     gameScore: viewModel.gameScore,
                     highScore: viewModel.gameScore,
-                    difficulty: self.difficulty,
-                    isActive: gameTimer.isActive,
-                    stopAnimation: bubbleView.stopAnimating,
-                    startAnimation: bubbleView.startAnimating,
-                    setIsActive: gameTimer.setIsActive)
-            }
-            Spacer()
-            GeometryReader { geometry in
-                if countDownTimer.totalTime > 0 {
-                    HStack {
-                        Text("\(countDownTimer.totalTime.formatted())")
-                            .bold()
-                            .font(.system(size: 200))
-                    }.frame(width: geometry.size.width, height: geometry.size.height)
-                } else {
-                    if !gameTimer.isActive {
-                        HStack {
-                            ZStack {
-                                Text("Paused")
-                                    
-                            }.background(.gray)
-                                .padding()
-                                .frame(width: 200, height: 200)
-                                .opacity(1)
-                        }.frame(width: geometry.size.width, height: geometry.size.height)
-                            .opacity(0.5)
-                            .zIndex(10)
-                    }
-                ZStack {
-                    ForEach(Array(bubbleView.bubbles.keys), id: \.self) { key in
-                        bubbleView.bubbles[key]
-                    }
-                }.overlay(
-                    
-                    ForEach(Array(bubbleView.bubbles.keys), id: \.self) { key in
-                        let current = bubbleView.bubbles[key]
-                        current.onTapGesture {
-                            if gameTimer.isActive {
-                                if viewModel.previousBubble != nil {
-                                    viewModel.multiplier = (viewModel.previousBubble?.color == current?.color) ? 1.5 : 1
+                    difficulty: viewModel.difficulty,
+                    isActive: viewModel.isGameTimerActive(),
+                    stopAnimation: viewModel.stopAnimating,
+                    startAnimation: viewModel.startAnimating,
+                    toggleIsActive: viewModel.toggleIsActive)
+                Spacer()
+                
+                GeometryReader { geometry in
+                    // Loop through the bubbles array
+                    ForEach(Array(viewModel.bubbles.enumerated()), id: \.element.id) { index, bubble in
+                        // Displays the bubble and adds the tap functionality that updates the scores and removes the selected bubble
+                        bubble.onTapGesture {
+                            if viewModel.isGameTimerActive() {
+                                if viewModel.previousBubbleColor != BubbleColors.nothing {
+                                    viewModel.setMultiplier(currentBubbleColor: bubble.self.viewModel.bubbleColor)
                                 }
-                                viewModel.previousBubble = current
-                                viewModel.gameScore += (current!.points * viewModel.multiplier)
-                                
-                                bubbleView.removeBubble(id: key)
+                                viewModel.setPreviousBubbleColor(currentBubbleColor: bubble.self.viewModel.bubbleColor)
+                                viewModel.updateGameScore(bubblePoints: bubble.self.viewModel.points)
+                                viewModel.removeBubble(indexToRemove: index)
+
                             }
                         }
+                }
+                    VStack {
                     }
-                ).onAppear(perform: {
-                    gameTimer.setTime(newTime: totalTime)
-                    bubbleView.setParameters(parentBoundingBox: geometry.frame(in: .global), difficulty: self.difficulty)
-                    bubbleView.generateBubbles(
-                        numberOfBubbles: self.numberOfBubbles)
-                    gameTimer.startTimer()
-                    if self.difficulty > 0 {
-                        bubbleView.startAnimating()
-                    }
-                })
+                    .onAppear(perform: {
+                        // On appear, we set the bounding box of the viewmodel
+                        viewModel.setParentBoundingBox(parentBoundingBox: geometry.frame(in: .global))
+                        viewModel.setBubbleViewModel(parentBoundingBox: geometry.frame(in: .global))
+                        // Also generate some bubbles
+                        viewModel.generateBubbles()
+                        // If the difficulty is greater than 0, animate the bubbles
+                        if viewModel.difficulty > 0 {
+                            viewModel.startAnimating()
+                        }
+                        // Start the game timer
+                        viewModel.gameTimer.startTimer()
+                    })
+                }
             }
-        }.onReceive(timer) { time in
+        }.onReceive(timer) {time in
+            // If the game isn't active nothing happens
             guard isActive else {
                 return
             }
-            countDownTimer.totalTime > 0 ? countDownTimer.runTimer() : countDownTimer.destroyTimer()
-            if gameTimer.totalTime > 0 {
-                gameTimer.runTimer()
+            // Switch statement to decrement the countdown or game timer based on if countDown is 0 or not
+            viewModel.countDownTime > 0 ? viewModel.decrementCountDownTime() : viewModel.decrementGameTime()
+            if viewModel.gameTime == 0 {
+               viewModel.insertNewScore()
+               mainViewModel.setGameStarting()
+           }
+            // Every second, random bubbles are removed and generated
+            if viewModel.gameTime.truncatingRemainder(dividingBy: 1) == 0 && viewModel.gameTime < 60 &&
+                viewModel.isGameTimerActive() {
+                viewModel.removeRandomBubbles()
+                viewModel.generateBubbles()
             }
-            if gameTimer.totalTime == 0 {
-                viewModel.insertNewScore()
-                mainViewModel.setGameStarting()
-            }
-            if gameTimer.totalTime.truncatingRemainder(dividingBy: 1) == 0 && gameTimer.totalTime < 60 && 
-                gameTimer.isActive{
-                bubbleView.generateBubbles(numberOfBubbles: self.numberOfBubbles)
-            }
-        }.onAppear() {
-            countDownTimer.startTimer()
         }
-        }
+        .frame(maxWidth: .infinity)
     }
 }
 
 #Preview {
-    GameView(
-        numberOfBubbles: 15,
-        totalTime: 40,
-        difficulty: 0
-    ).environmentObject(MainViewModel())
+    GameView(viewModel: .init(gameTime: 20, numberOfBubbles: 15, difficulty: 0))
+        .environmentObject(MainViewModel())
 }
+

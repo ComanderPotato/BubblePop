@@ -6,12 +6,11 @@
 //
 
 import SwiftUI
-
+// Login view to allow the user to log into the application 
 struct LoginView: View {
-    
     @StateObject var viewModel = LoginViewModel()
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack {
                 Spacer()
                 Form {
@@ -27,30 +26,27 @@ struct LoginView: View {
                         .textFieldStyle(DefaultTextFieldStyle())
                         .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
                         .autocorrectionDisabled()
-                    
-                    TLButton(
+                    BPButton(
                         title: "Log in",
                         background: .blue
                     ) {
                         viewModel.login()
                     }
                 }
-                .offset(y: -50)
-                // Create Account
-                    
+                Spacer()
                 VStack {
-                    Text("New around here?")
+                    Text("Don't have an account?")
                     NavigationLink("Create An Account",
                                    destination: RegisterView())
                 }
                 .padding(.bottom, 50)
                 Spacer()
-            
-            }
+            }.frame(maxWidth: .infinity, maxHeight: .infinity)
+                
         }
+        .frame(maxWidth: 400)
     }
 }
-
 #Preview {
     LoginView()
 }

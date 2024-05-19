@@ -7,11 +7,12 @@
 
 import SwiftUI
 
+// Profile view, it will fetch the current user on load and show their infomation on the screen when loaded
 struct ProfileView: View {
     @StateObject var viewModel = ProfileViewModel()
     var body: some View {
-        NavigationView {
-            VStack {
+        NavigationStack {
+            ScrollView {
                 if let user = viewModel.user {
                     profile(user: user)
                 } else {
@@ -32,7 +33,6 @@ struct ProfileView: View {
             .foregroundStyle(.blue)
             .frame(width: 125, height: 125)
             .padding()
-        // Info: Email, member since
         VStack(alignment: .leading) {
             HStack {
                 Text("Name: ")
@@ -49,13 +49,7 @@ struct ProfileView: View {
             HStack {
                 Text("High Score: ")
                     .bold()
-                Text("\(user.highScore)")
-            }
-            .padding()
-            HStack {
-                Text("High Score: ")
-                    .bold()
-                Text(flag(country: user.origin))
+                Text("\(user.highScore.formatted())")
             }
             .padding()
             HStack {
@@ -66,7 +60,6 @@ struct ProfileView: View {
             .padding()
         }
         .padding()
-        // Sign out
         Button("Log Out") {
             viewModel.logout()
         }

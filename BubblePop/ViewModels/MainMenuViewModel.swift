@@ -8,10 +8,7 @@
 import Foundation
 
 class MainMenuViewModel: ObservableObject {
-    @Published var gameStarting: Bool = false
     init() {
     }
-    func setGameStarting() {
-        self.gameStarting = !self.gameStarting
-    }
+
 }

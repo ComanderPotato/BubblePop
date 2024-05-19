@@ -12,7 +12,7 @@ import Foundation
 class ProfileViewModel: ObservableObject {
     @Published var user: User? = nil
     init() {}
-    
+    // Method to fetch the current user from the database
     func fetchUser() {
         guard let userId = Auth.auth().currentUser?.uid else {
             return
@@ -28,12 +28,12 @@ class ProfileViewModel: ObservableObject {
                     id: data["id"] as? String ?? "",
                     name: data["name"] as? String ?? "",
                     email: data["email"] as? String ?? "",
-                    origin: data["origin"] as? String ?? "",
-                    highScore: data["highscore"] as? Double ?? 0.0,
+                    highScore: data["highScore"] as? Double ?? 0.0,
                     joined: data["joined"] as? TimeInterval ?? 0)
             }
         }
     }
+    // Logs the user out of the application
     func logout() {
         do {
             try Auth.auth().signOut()

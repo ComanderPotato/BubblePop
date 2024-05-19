@@ -6,37 +6,32 @@
 //
 import Combine
 import Foundation
-
+// A timer class I made to make my app more extendable 
 class TimerViewModel: ObservableObject {
     @Published var timer: Publishers.Autoconnect<Timer.TimerPublisher>?
-    @Published var totalTime: TimeInterval = 60
+    @Published var totalTime: TimeInterval
     @Published var isActive: Bool = false
-    init() {}
     init(totalTime: TimeInterval) {
         self.totalTime = totalTime
-//        self.timer = Timer.publish(every: totalTime, on: .main, in: .common).autoconnect()
-        self.isActive = false
     }
-    func destroyTimer() {
-//        self.timer = self.timer
-        
-    }
-    func setTime(newTime: TimeInterval) {
-        self.totalTime = newTime
-    }
-    func startTimer() {
+    func startTimer() -> Void  {
         self.timer = Timer.publish(every: self.totalTime, on: .main, in: .common).autoconnect()
-        self.setIsActive()
+        self.toggleIsActive()
+    }
+    func destroyTimer() -> Void {
+        self.timer?.upstream.connect().cancel()
     }
     func runTimer() -> Void {
-        if(isActive) {
-            self.totalTime -= 1
-        }
+        self.totalTime -= 1
+    }
+    func decrementTimer() -> Void {
+        self.totalTime -= 1
     }
     func pauseTime() -> Void {
         self.totalTime = self.totalTime
     }
-    func setIsActive() {
+    func toggleIsActive() {
         self.isActive = !self.isActive
     }
+
 }

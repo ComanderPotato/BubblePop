@@ -12,11 +12,10 @@
 		5A4DB9132BBE4F2A00044D0D /* MainMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4DB9122BBE4F2A00044D0D /* MainMenuViewModel.swift */; };
 		5A4DB9152BBE51E500044D0D /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4DB9142BBE51E500044D0D /* ProfileViewModel.swift */; };
 		5A4DB9172BBE51EB00044D0D /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4DB9162BBE51EB00044D0D /* ProfileView.swift */; };
-		5A4DB9192BBEEB7800044D0D /* TLButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4DB9182BBEEB7800044D0D /* TLButton.swift */; };
-		5A4DB91B2BC1AA6F00044D0D /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4DB91A2BC1AA6F00044D0D /* Country.swift */; };
+		5A4DB9192BBEEB7800044D0D /* BPButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4DB9182BBEEB7800044D0D /* BPButton.swift */; };
 		5A4DB91D2BC4C41500044D0D /* GameHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4DB91C2BC4C41500044D0D /* GameHeaderView.swift */; };
-		5A4DB9212BC6D4FD00044D0D /* TempGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4DB9202BC6D4FD00044D0D /* TempGameViewModel.swift */; };
-		5A4DB9232BC6D60100044D0D /* TempGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4DB9222BC6D60100044D0D /* TempGameView.swift */; };
+		5A4DB94F2BCA54A100044D0D /* LoadingAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4DB94E2BCA54A100044D0D /* LoadingAnimationView.swift */; };
+		5A4DB9512BCA54AD00044D0D /* LoadingAnimationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4DB9502BCA54AD00044D0D /* LoadingAnimationViewModel.swift */; };
 		5AED2FDD2BB523DF00CA88E1 /* BubblePopApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AED2FDC2BB523DF00CA88E1 /* BubblePopApp.swift */; };
 		5AED2FDF2BB523DF00CA88E1 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AED2FDE2BB523DF00CA88E1 /* MainView.swift */; };
 		5AED2FE12BB523E100CA88E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5AED2FE02BB523E100CA88E1 /* Assets.xcassets */; };
@@ -47,7 +46,6 @@
 		5AED30272BB529E300CA88E1 /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AED30262BB529E300CA88E1 /* Score.swift */; };
 		5AED30292BB5896400CA88E1 /* LeaderBoardScoreViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AED30282BB5896300CA88E1 /* LeaderBoardScoreViewViewModel.swift */; };
 		5AED302B2BB5897700CA88E1 /* LeaderBoardScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AED302A2BB5897700CA88E1 /* LeaderBoardScoreView.swift */; };
-		5AED302F2BB926B900CA88E1 /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AED302E2BB926B900CA88E1 /* Formatter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,11 +54,11 @@
 		5A4DB9122BBE4F2A00044D0D /* MainMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuViewModel.swift; sourceTree = "<group>"; };
 		5A4DB9142BBE51E500044D0D /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		5A4DB9162BBE51EB00044D0D /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
-		5A4DB9182BBEEB7800044D0D /* TLButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TLButton.swift; sourceTree = "<group>"; };
-		5A4DB91A2BC1AA6F00044D0D /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
+		5A4DB9182BBEEB7800044D0D /* BPButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPButton.swift; sourceTree = "<group>"; };
 		5A4DB91C2BC4C41500044D0D /* GameHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameHeaderView.swift; sourceTree = "<group>"; };
-		5A4DB9202BC6D4FD00044D0D /* TempGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempGameViewModel.swift; sourceTree = "<group>"; };
-		5A4DB9222BC6D60100044D0D /* TempGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempGameView.swift; sourceTree = "<group>"; };
+		5A4DB94E2BCA54A100044D0D /* LoadingAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingAnimationView.swift; sourceTree = "<group>"; };
+		5A4DB9502BCA54AD00044D0D /* LoadingAnimationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingAnimationViewModel.swift; sourceTree = "<group>"; };
+		5ABB82232BDBDA24009883EF /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		5AED2FD92BB523DF00CA88E1 /* BubblePop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BubblePop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AED2FDC2BB523DF00CA88E1 /* BubblePopApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubblePopApp.swift; sourceTree = "<group>"; };
 		5AED2FDE2BB523DF00CA88E1 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -83,7 +81,6 @@
 		5AED30262BB529E300CA88E1 /* Score.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Score.swift; sourceTree = "<group>"; };
 		5AED30282BB5896300CA88E1 /* LeaderBoardScoreViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderBoardScoreViewViewModel.swift; sourceTree = "<group>"; };
 		5AED302A2BB5897700CA88E1 /* LeaderBoardScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderBoardScoreView.swift; sourceTree = "<group>"; };
-		5AED302E2BB926B900CA88E1 /* Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +106,7 @@
 		5AED2FD02BB523DF00CA88E1 = {
 			isa = PBXGroup;
 			children = (
+				5ABB82232BDBDA24009883EF /* README.md */,
 				5AED2FDB2BB523DF00CA88E1 /* BubblePop */,
 				5AED2FDA2BB523DF00CA88E1 /* Products */,
 				5AED2FF92BB525EE00CA88E1 /* Frameworks */,
@@ -171,9 +169,9 @@
 				5AED2FDE2BB523DF00CA88E1 /* MainView.swift */,
 				5AED301C2BB528F600CA88E1 /* RegisterView.swift */,
 				5A4DB9162BBE51EB00044D0D /* ProfileView.swift */,
-				5A4DB9182BBEEB7800044D0D /* TLButton.swift */,
+				5A4DB9182BBEEB7800044D0D /* BPButton.swift */,
 				5A4DB91C2BC4C41500044D0D /* GameHeaderView.swift */,
-				5A4DB9222BC6D60100044D0D /* TempGameView.swift */,
+				5A4DB94E2BCA54A100044D0D /* LoadingAnimationView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -191,7 +189,7 @@
 				5AED30242BB5291800CA88E1 /* RegisterViewModel.swift */,
 				5A4DB90E2BBE467100044D0D /* TimerViewModel.swift */,
 				5A4DB9142BBE51E500044D0D /* ProfileViewModel.swift */,
-				5A4DB9202BC6D4FD00044D0D /* TempGameViewModel.swift */,
+				5A4DB9502BCA54AD00044D0D /* LoadingAnimationViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -203,8 +201,6 @@
 				5AED2FDC2BB523DF00CA88E1 /* BubblePopApp.swift */,
 				5AED2FE02BB523E100CA88E1 /* Assets.xcassets */,
 				5AED30182BB5273F00CA88E1 /* Encodable.swift */,
-				5AED302E2BB926B900CA88E1 /* Formatter.swift */,
-				5A4DB91A2BC1AA6F00044D0D /* Country.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -294,9 +290,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A4DB9512BCA54AD00044D0D /* LoadingAnimationViewModel.swift in Sources */,
 				5AED301D2BB528F600CA88E1 /* RegisterView.swift in Sources */,
-				5AED302F2BB926B900CA88E1 /* Formatter.swift in Sources */,
-				5A4DB91B2BC1AA6F00044D0D /* Country.swift in Sources */,
 				5AED30232BB5291300CA88E1 /* LoginViewModel.swift in Sources */,
 				5A4DB90F2BBE467100044D0D /* TimerViewModel.swift in Sources */,
 				5AED2FDF2BB523DF00CA88E1 /* MainView.swift in Sources */,
@@ -307,18 +302,17 @@
 				5AED30272BB529E300CA88E1 /* Score.swift in Sources */,
 				5AED301F2BB528FE00CA88E1 /* LeaderBoardView.swift in Sources */,
 				5AED30212BB5290700CA88E1 /* LeaderBoardViewModel.swift in Sources */,
-				5A4DB9232BC6D60100044D0D /* TempGameView.swift in Sources */,
 				5AED30142BB526F400CA88E1 /* BubbleView.swift in Sources */,
 				5AED300A2BB526BB00CA88E1 /* MainViewModel.swift in Sources */,
 				5AED302B2BB5897700CA88E1 /* LeaderBoardScoreView.swift in Sources */,
 				5A4DB9152BBE51E500044D0D /* ProfileViewModel.swift in Sources */,
 				5A4DB9172BBE51EB00044D0D /* ProfileView.swift in Sources */,
-				5A4DB9212BC6D4FD00044D0D /* TempGameViewModel.swift in Sources */,
 				5AED30122BB526ED00CA88E1 /* BubbleViewModel.swift in Sources */,
 				5A4DB9112BBE4F2000044D0D /* MainMenuView.swift in Sources */,
 				5A4DB91D2BC4C41500044D0D /* GameHeaderView.swift in Sources */,
-				5A4DB9192BBEEB7800044D0D /* TLButton.swift in Sources */,
+				5A4DB9192BBEEB7800044D0D /* BPButton.swift in Sources */,
 				5AED30102BB526E300CA88E1 /* GameViewModel.swift in Sources */,
+				5A4DB94F2BCA54A100044D0D /* LoadingAnimationView.swift in Sources */,
 				5AED2FDD2BB523DF00CA88E1 /* BubblePopApp.swift in Sources */,
 				5AED30292BB5896400CA88E1 /* LeaderBoardScoreViewViewModel.swift in Sources */,
 				5AED301B2BB528ED00CA88E1 /* LoginView.swift in Sources */,
@@ -456,11 +450,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BubblePop/Preview Content\"";
+				DEVELOPMENT_TEAM = 99Q8YRBA5G;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -484,11 +480,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BubblePop/Preview Content\"";
+				DEVELOPMENT_TEAM = 99Q8YRBA5G;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

@@ -7,7 +7,8 @@
 
 import SwiftUI
 
-struct TLButton: View {
+// Simple button class for better extensibility 
+struct BPButton: View {
     let title: String
     let background: Color
     let action: () -> Void
@@ -28,7 +29,7 @@ struct TLButton: View {
 }
 
 #Preview {
-    TLButton(title: "Value",
+    BPButton(title: "Value",
              background: .pink) {
     }
 }

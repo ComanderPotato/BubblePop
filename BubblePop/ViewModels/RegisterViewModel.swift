@@ -15,12 +15,11 @@ class RegisterViewModel: ObservableObject {
     @Published var password = ""
     @Published var origin = "AU"
     init() {}
-    
+    // Method to register a new user, but first validates all inputs are correct
     func register() {
         guard validate() else {
             return
         }
-        // Weak self????
         Auth.auth().createUser(withEmail: email, password: password) { [weak self] result, error in
             guard let userId = result?.user.uid else {
                 return
@@ -28,12 +27,12 @@ class RegisterViewModel: ObservableObject {
             self?.insertUserRecord(id: userId)
         }
     }
+    // Inserts a new user record into the Firestore database
     private func insertUserRecord(id: String) {
         let newUser = User(
             id: id,
             name: name,
             email: email.lowercased(),
-            origin: origin,
             highScore: 0.0,
             joined: Date().timeIntervalSince1970
         )
@@ -42,6 +41,7 @@ class RegisterViewModel: ObservableObject {
             .document(id)
             .setData(newUser.asDictionary())
     }
+    // Validates all register inputs
     private func validate() -> Bool {
         guard !name.trimmingCharacters(in: .whitespaces).isEmpty,
               !email.trimmingCharacters(in: .whitespaces).isEmpty,

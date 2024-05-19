@@ -7,6 +7,7 @@
 
 import SwiftUI
 import FirebaseCore
+
 class AppDelegate: NSObject, UIApplicationDelegate {
   func application(_ application: UIApplication,
                    didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
@@ -15,6 +16,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     return true
   }
 }
+
 
 @main
 struct BubblePopApp: App {
@@ -26,6 +28,7 @@ struct BubblePopApp: App {
     var body: some Scene {
         WindowGroup {
             MainView().environmentObject(viewModel)
+                .preferredColorScheme(.light)
         }
     }
 }

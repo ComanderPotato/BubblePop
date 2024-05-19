@@ -6,12 +6,11 @@
 //
 
 import Foundation
-
-struct User: Codable {
+// User class
+struct User: Codable, Identifiable {
     let id: String
     let name: String
     let email: String
-    let origin: String
     let highScore: Double
     let joined: TimeInterval
 }
